@@ -17,7 +17,6 @@ public class MainActivity extends BaseActivity {
             "android.permission.READ_EXTERNAL_STORAGE",
             "android.permission.WRITE_EXTERNAL_STORAGE"};//内存读写的权限，现在要动态申请了？
 
-
     /**
      * 申请权限，为了要把外部文件写入到 手机内存中
      *
@@ -39,8 +38,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);//执行父类的onCreate
+        super.onCreate(savedInstanceState);//执行父类的onCreate，父类里面干了什么？看吧
         setContentView(R.layout.activity_main);//常规操作，setContentView
+
+        findViewById(R.id.textView).setBackground(getDrawable(R.color.colorAccent));
+
         verifyStoragePermissions(this);//申请权限。。
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
