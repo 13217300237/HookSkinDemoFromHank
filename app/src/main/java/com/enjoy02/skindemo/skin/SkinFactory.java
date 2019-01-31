@@ -59,6 +59,7 @@ public class SkinFactory implements LayoutInflater.Factory2 {
         // TODO: 关键点1：执行系统代码里的创建View的过程，我们只是想加入自己的思想，并不是要全盘接管
         View view = mDelegate.createView(parent, name, context, attrs);//系统创建出来的时候有可能为空，你问为啥？请全文搜索 “标记标记，因为” 你会找到你要的答案
         if (view == null) {//万一系统创建出来是空，那么我们来补救
+            mConstructorArgs[0] = context;
             try {
                 if (-1 == name.indexOf('.')) {//不包含. 说明不带包名，那么我们帮他加上包名
                     view = createViewByPrefix(context, name, prefixs, attrs);
